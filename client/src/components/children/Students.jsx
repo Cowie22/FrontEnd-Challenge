@@ -8,7 +8,7 @@ class Students extends React.Component {
     }
   }
   render() {
-    let student = this.props.data.map((person, i) => {
+    let student = this.props.filterData.map((person, i) => {
       let average = person.grades.reduce((a, b) => parseInt(a) + parseInt(b)) / person.grades.length;
       return (
         <div className="student-container">
