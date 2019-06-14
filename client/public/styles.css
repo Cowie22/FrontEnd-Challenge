@@ -110,3 +110,16 @@ body {
 .logo:hover {
   cursor: pointer;
 }
+
+/* Test Scores Styling */
+
+.test-scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.score {
+  margin-bottom: -10px;
+}

@@ -11,7 +11,7 @@ class Students extends React.Component {
     let student = this.props.filterData.map((person, i) => {
       let average = person.grades.reduce((a, b) => parseInt(a) + parseInt(b)) / person.grades.length;
       let testScores = person.grades.map((grade, i) => {
-        return <p>{`Test ${i + 1}: ${grade}%`}</p>
+        return <p className="score">{`Test ${i + 1}: ${grade}%`}</p>
       })
       return (
         <div className="student-container" onClick={() => person.id = person.id > 0 ? person.id - 100 : person.id + 100}>
@@ -36,7 +36,7 @@ class Students extends React.Component {
                 Average: {' '}{`${average}%`}
               </div>
               {parseInt(person.id) < 0 ?
-                <div>
+                <div className="test-scores">
                  {testScores}
                 </div>
                 :
