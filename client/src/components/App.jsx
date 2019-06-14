@@ -25,6 +25,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getAPIData();
   }
+  // Gets data from the API
   getAPIData() {
     axios.get('https://www.hatchways.io/api/assessment/students')
       .then(res => {
@@ -35,6 +36,8 @@ class App extends React.Component {
         })
       })
   }
+  // Filters for student names, first conditional in the function is dependent on the length of the
+  // tags filter and allows both to be filtered at the same time
   filterStudents(studentFilter) {
     let filteredStudents = this.state.tagFilterCount > 0 ? this.state.filterData : this.state.data;
     filteredStudents = filteredStudents.filter((student) => {
@@ -46,11 +49,14 @@ class App extends React.Component {
       filterData: filteredStudents,
     })
   }
+  // Keeps track of the field length so that both fields can be filtered at the same time
   handleNameCount(event) {
     this.setState({
       nameCount: event
     })
   }
+  // Filters for student tags, first conditional in the function is dependent on the length of the
+  // names filter and allows both to be filtered at the same time
   filterTags(tagFilter) {
     let filteredTags = this.state.nameCount > 0 ? this.state.filterData : this.state.data;
     filteredTags = filteredTags.filter((tags) => {
@@ -64,16 +70,21 @@ class App extends React.Component {
       filterData: filteredTags,
     })
   }
+  // Keeps track of the field length so that both fields can be filtered at the same time
   handleTagCount(event) {
     this.setState({
       tagFilterCount: event
     })
   }
+  // Handles whether or not the hidden information is displayed
   handleLogoClicked(event) {
     this.setState({
       clicked: !this.state.clicked,
     })
   }
+  // Handles when a new tag is added, if there are no tags then the tags field
+  // Is added as an array to the correct object using the object id and the field value
+  // Is pushed to the array
   handleAddTag(event) {
     this.state.tagInput.push(event);
     this.state.data.map((student, i) => {
@@ -84,6 +95,7 @@ class App extends React.Component {
         student.tag.push(event);
       }
     })
+    // Callback so that the added tag is not one click behind
     this.setState({
       tagCount: this.state.tagCount + 1
     }, () => console.log('data', this.state.data))

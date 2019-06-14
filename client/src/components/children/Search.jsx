@@ -15,22 +15,29 @@ class Search extends React.Component {
     this.setState({
       name: event.target.value,
     })
+    // Controls which data array is used in app so that both fields can be filtered at the same time
+    // If 0 then the original data array is used, otherwise the filtered data array is used
     if (event.length === 0) {
       this.props.filterStudents(0);
     } else {
       this.props.filterStudents(event.target.value);
     }
+    // controls the nameCount state in app
     this.props.handleNameCount(event.target.value.length);
   }
+  // Handles change in the search form for student tags
   handleTagChange(event) {
     this.setState({
       tags: event.target.value,
     })
+    // Controls which data array is used in app so that both fields can be filtered at the same time
+    // If 0 then the original data array is used, otherwise the filtered data array is used
     if (event.length === 0) {
       this.props.filterTags(0);
     } else {
       this.props.filterTags(event.target.value);
     }
+    // controls the tagFilterCount state in app
     this.props.handleTagCount(event.target.value.length);
   }
   render() {

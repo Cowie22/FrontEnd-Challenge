@@ -133,9 +133,9 @@ body {
   display: flex;
   flex-direction: column;
   height: fit-content;
-  /* position: absolute;
-  top: 70%;
-  right: 40%; */
+  position: relative;
+  top: 82%;
+  left: -50%;
 }
 
 .tags-container {
@@ -172,4 +172,17 @@ body {
   margin-right: 10px;
   padding-right: 4px;
   padding-left: 4px;
+}
+
+.btn {
+  background: black;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+  cursor: pointer;
 }

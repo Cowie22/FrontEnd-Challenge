@@ -8,6 +8,7 @@ class Tags extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
   }
+  // Handles changes in the tag field
   handleChange(event) {
     this.setState({
       tagValue: event.target.value,
@@ -20,7 +21,9 @@ class Tags extends React.Component {
           <label>Insert Tags: </label>
           {'  '}
           <input type="text" id="tagValue" value={this.state.tagValue} onChange={this.handleChange}></input>
-          <button onClick={() => this.props.handleAddTag(this.state.tagValue)}>ADD TAG</button>
+          {/* Click is passed up to app giving the correct value in the array,
+          which in turn can be both displayed on the page and filtered by */}
+          <button className="btn" onClick={() => this.props.handleAddTag(this.state.tagValue)}>ADD TAG</button>
         </div>
       </div>
     )
