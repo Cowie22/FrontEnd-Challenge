@@ -10,8 +10,11 @@ class Students extends React.Component {
   render() {
     let student = this.props.filterData.map((person, i) => {
       let average = person.grades.reduce((a, b) => parseInt(a) + parseInt(b)) / person.grades.length;
+      let testScores = person.grades.map((grade, i) => {
+        return <p>{`Test ${i + 1}: ${grade}%`}</p>
+      })
       return (
-        <div className="student-container">
+        <div className="student-container" onClick={() => person.id = person.id > 0 ? person.id - 100 : person.id + 100}>
           <img src={person.pic} className="student-pic" />
           <div className="student-info-container">
             <div className="student-name">
@@ -32,18 +35,29 @@ class Students extends React.Component {
               <div>
                 Average: {' '}{`${average}%`}
               </div>
+              {parseInt(person.id) < 0 ?
+                <div>
+                 {testScores}
+                </div>
+                :
+                <div>
+
+                </div>
+              }
             </div>
           </div>
-              {this.props.clicked ?
-              <div>
-                test 1:
-              </div>
-              :
-              <div className="logo-container">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRizT3fEFOQHdZyw-EdCt3XOVUnbvKsASn036Xr7aK0cnJVIGwq" className="logo"
-                onClick={() => console.log('hello')}
-                />
-              </div>
+              {parseInt(person.id) < 0 ?
+            <div className="logo-container">
+              <img src="http://pngimg.com/uploads/minus/minus_PNG55.png" className="logo"
+              onClick={() => this.props.handleLogoClicked()}
+              />
+            </div>
+            :
+            <div className="logo-container">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRizT3fEFOQHdZyw-EdCt3XOVUnbvKsASn036Xr7aK0cnJVIGwq" className="logo"
+              onClick={() => this.props.handleLogoClicked()}
+              />
+            </div>
               }
         </div>
       )

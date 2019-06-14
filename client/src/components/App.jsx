@@ -12,6 +12,7 @@ class App extends React.Component {
       clicked: false,
     }
     this.filterStudents = this.filterStudents.bind(this);
+    this.handleLogoClicked = this.handleLogoClicked.bind(this);
   }
   componentDidMount() {
     this.getAPIData();
@@ -20,6 +21,7 @@ class App extends React.Component {
   getAPIData() {
     axios.get('https://www.hatchways.io/api/assessment/students')
       .then(res => {
+        res.data.students.clicked = false;
         this.setState({
           data: res.data.students,
           filterData: res.data.students,
@@ -37,6 +39,11 @@ class App extends React.Component {
       filterData: filteredStudents,
     })
   }
+  handleLogoClicked(event) {
+    this.setState({
+      clicked: !this.state.clicked,
+    })
+  }
   render() {
     return (
       <div>
@@ -50,7 +57,8 @@ class App extends React.Component {
           <Students
             data={this.state.data}
             filterData={this.state.filterData}
-            clicked={this.props.clicked}
+            clicked={this.state.clicked}
+            handleLogoClicked={this.handleLogoClicked}
           />
         </div>
       </div>
