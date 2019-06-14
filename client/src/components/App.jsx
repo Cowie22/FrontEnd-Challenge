@@ -23,7 +23,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="app-container">
         <Students
           data={this.state.data}
         />
