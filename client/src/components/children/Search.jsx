@@ -10,20 +10,28 @@ class Search extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
   }
-  // Handles change in the search form for park names
+  // Handles change in the search form for student names
   handleNameChange(event) {
     this.setState({
       name: event.target.value,
-      tags: '',
     })
-    this.props.filterStudents(event.target.value);
+    if (event.length === 0) {
+      this.props.filterStudents(0);
+    } else {
+      this.props.filterStudents(event.target.value);
+    }
+    this.props.handleNameCount(event.target.value.length);
   }
   handleTagChange(event) {
     this.setState({
-      name: '',
       tags: event.target.value,
     })
-    this.props.filterTags(event.target.value);
+    if (event.length === 0) {
+      this.props.filterTags(0);
+    } else {
+      this.props.filterTags(event.target.value);
+    }
+    this.props.handleTagCount(event.target.value.length);
   }
   render() {
     return (

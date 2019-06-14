@@ -12,11 +12,15 @@ class App extends React.Component {
       tagInput: [],
       tagCount: 0,
       filter: [],
+      nameCount: 0,
+      tagFilterCount: 0,
     }
     this.filterStudents = this.filterStudents.bind(this);
     this.filterTags = this.filterTags.bind(this);
     this.handleLogoClicked = this.handleLogoClicked.bind(this);
     this.handleAddTag = this.handleAddTag.bind(this);
+    this.handleNameCount = this.handleNameCount.bind(this);
+    this.handleTagCount = this.handleTagCount.bind(this);
   }
   componentDidMount() {
     this.getAPIData();
@@ -32,7 +36,7 @@ class App extends React.Component {
       })
   }
   filterStudents(studentFilter) {
-    let filteredStudents = this.state.data;
+    let filteredStudents = this.state.tagFilterCount > 0 ? this.state.filterData : this.state.data;
     filteredStudents = filteredStudents.filter((student) => {
       let name = `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`;
       return name.indexOf(
@@ -42,17 +46,27 @@ class App extends React.Component {
       filterData: filteredStudents,
     })
   }
+  handleNameCount(event) {
+    this.setState({
+      nameCount: event
+    })
+  }
   filterTags(tagFilter) {
-    let filteredTags = this.state.data;
+    let filteredTags = this.state.nameCount > 0 ? this.state.filterData : this.state.data;
     filteredTags = filteredTags.filter((tags) => {
       if (tags.tag) {
-        let tagalong = tags.tag.toLowerCase();
+        let tagalong = tags.tag.join().toLowerCase();
         return tagalong.indexOf(
           tagFilter.toLowerCase()) !== -1
       }
     })
     this.setState({
       filterData: filteredTags,
+    })
+  }
+  handleTagCount(event) {
+    this.setState({
+      tagFilterCount: event
     })
   }
   handleLogoClicked(event) {
@@ -62,18 +76,17 @@ class App extends React.Component {
   }
   handleAddTag(event) {
     this.state.tagInput.push(event);
-    console.log('data', this.state.data)
     this.state.data.map((student, i) => {
-      console.log('event', i);
-      console.log('student', student.id)
+      if (!student.tag) {
+        student.tag = [];
+      }
       if (i + 1 === student.id) {
-        student.tag = event;
+        student.tag.push(event);
       }
     })
-    // this.state.data[this.state.data.id].tag = event;
     this.setState({
       tagCount: this.state.tagCount + 1
-    })
+    }, () => console.log('data', this.state.data))
   }
   render() {
     return (
@@ -83,6 +96,8 @@ class App extends React.Component {
             filterData={this.state.filterData}
             filterStudents={this.filterStudents}
             filterTags={this.filterTags}
+            handleNameCount={this.handleNameCount}
+            handleTagCount={this.handleTagCount}
           />
         </div>
         <div className="app-container">

@@ -7,9 +7,12 @@ const Students = (props) => {
     let testScores = person.grades.map((grade, i) => {
       return <p className="score">{`Test ${i + 1}: ${grade}%`}</p>
     })
-    let studentTags = [];
-    studentTags.push(person.tag)
-    console.log(studentTags)
+    let studentTags;
+    if (person.tag) {
+      studentTags = person.tag.map((tagalong, i) => {
+        return <div key={i} className="tagalong">{tagalong}</div>
+      });
+    }
     return (
       <div className="student-container" onClick={() => person.id = person.id > 0 ? person.id - 100 : person.id + 100}>
         <img src={person.pic} className="student-pic" />
@@ -36,7 +39,12 @@ const Students = (props) => {
               <div className="test-scores">
                {testScores}
                <br></br>
-               Tags: {studentTags}
+               <div className="tags-section">
+               Tags:
+               <div className="new-tag">
+                {studentTags}
+               </div>
+               </div>
               </div>
               :
               <div>
