@@ -11,6 +11,7 @@ class App extends React.Component {
       clicked: false,
       tagInput: [],
       tagCount: 0,
+      filter: [],
     }
     this.filterStudents = this.filterStudents.bind(this);
     this.filterTags = this.filterTags.bind(this);
@@ -42,12 +43,13 @@ class App extends React.Component {
     })
   }
   filterTags(tagFilter) {
-    let filteredTags = this.state.tagInput;
-    console.log('filter tags', filteredTags)
+    let filteredTags = this.state.data;
     filteredTags = filteredTags.filter((tags) => {
-      let tag = tags.toLowerCase();
-      return tag.indexOf(
-        tagFilter.toLowerCase()) !== -1
+      if (tags.tag) {
+        let tagalong = tags.tag.toLowerCase();
+        return tagalong.indexOf(
+          tagFilter.toLowerCase()) !== -1
+      }
     })
     this.setState({
       filterData: filteredTags,
@@ -59,7 +61,16 @@ class App extends React.Component {
     })
   }
   handleAddTag(event) {
-    this.state.tagInput.push(event)
+    this.state.tagInput.push(event);
+    console.log('data', this.state.data)
+    this.state.data.map((student, i) => {
+      console.log('event', i);
+      console.log('student', student.id)
+      if (i + 1 === student.id) {
+        student.tag = event;
+      }
+    })
+    // this.state.data[this.state.data.id].tag = event;
     this.setState({
       tagCount: this.state.tagCount + 1
     })
@@ -82,6 +93,7 @@ class App extends React.Component {
             handleLogoClicked={this.handleLogoClicked}
             handleAddTag={this.handleAddTag}
             tagInput={this.state.tagInput}
+            filter={this.state.filter}
           />
         </div>
       </div>

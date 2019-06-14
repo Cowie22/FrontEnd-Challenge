@@ -14,7 +14,6 @@ class Tags extends React.Component {
     })
   }
   render() {
-    console.log('tags', this.props.tagInput)
     let addedTags = this.props.tagInput.map((tag, i) => {
       return (
         <div key={i} className="tag">

@@ -133,9 +133,9 @@ body {
   display: flex;
   flex-direction: column;
   height: fit-content;
-  position: absolute;
+  /* position: absolute;
   top: 70%;
-  right: 40%;
+  right: 40%; */
 }
 
 .tags-container {
@@ -145,7 +145,7 @@ body {
 }
 
 .inner-tag-container {
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 
