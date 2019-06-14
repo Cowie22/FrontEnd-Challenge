@@ -24,6 +24,7 @@ body {
   flex-direction: row;
   width: 100%;
   height: fit-content;
+  margin-bottom: 40px;
   border-bottom: 1px solid black;
 }
 
@@ -32,6 +33,7 @@ body {
   flex-direction: column;
   position: relative;
   right: 24%;
+  margin-bottom: 40px;
 }
 
 .student-pic {
@@ -127,6 +129,41 @@ body {
 
 /* Tags Styling */
 
-/* .tags-input {
+.hidden-info {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  position: absolute;
+  top: 70%;
+  right: 40%;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
-} */
+}
+
+.inner-tag-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tags-list {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  color: black;
+  overflow: wrap;
+}
+
+.tag {
+  margin-right: 10px;
+  font-size: 22px;
+  border: 1px solid black;
+}

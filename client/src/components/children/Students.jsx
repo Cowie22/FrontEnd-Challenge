@@ -53,18 +53,20 @@ const Students = (props) => {
             />
           </div>
             }
-            {parseInt(person.id) < 0 ?
-             <div>
-              <Tags
-                handleAddTag={props.handleAddTag}
-                tagInput={props.tagInput}
-              />
-            </div>
-            :
-            <div>
+            <div className="hidden-info">
+              {parseInt(person.id) < 0 ?
+              <div className="tags-container">
+                <Tags
+                  handleAddTag={props.handleAddTag}
+                  tagInput={props.tagInput}
+                />
+              </div>
+              :
+              <div>
 
+              </div>
+              }
             </div>
-            }
       </div>
     )
   })

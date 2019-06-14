@@ -17,14 +17,14 @@ class Tags extends React.Component {
     console.log('tags', this.props.tagInput)
     let addedTags = this.props.tagInput.map((tag, i) => {
       return (
-        <div key={i}>
+        <div key={i} className="tag">
           {tag}
         </div>
       )
     })
     return (
-      <div>
-        <div>
+      <div className="inner-tag-container">
+        <div className="tags-list">
           {addedTags}
         </div>
         <div className="tags-input">

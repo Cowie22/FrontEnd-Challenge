@@ -43,9 +43,9 @@ class App extends React.Component {
   }
   filterTags(tagFilter) {
     let filteredTags = this.state.tagInput;
-    console.log(filteredTags)
-    filteredTags = filteredTags.filter((student) => {
-      let tag = `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`;
+    console.log('filter tags', filteredTags)
+    filteredTags = filteredTags.filter((tags) => {
+      let tag = tags.toLowerCase();
       return tag.indexOf(
         tagFilter.toLowerCase()) !== -1
     })
