@@ -5,15 +5,25 @@ class Search extends React.Component {
     super(props);
     this.state = {
       name: '',
+      tags: '',
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleTagChange = this.handleTagChange.bind(this);
   }
   // Handles change in the search form for park names
-  handleChange(event) {
+  handleNameChange(event) {
     this.setState({
       name: event.target.value,
+      tags: '',
     })
     this.props.filterStudents(event.target.value);
+  }
+  handleTagChange(event) {
+    this.setState({
+      name: '',
+      tags: event.target.value,
+    })
+    this.props.filterTags(event.target.value);
   }
   render() {
     return (
@@ -22,7 +32,12 @@ class Search extends React.Component {
         <div className="input-container">
           <label>Student Name: </label>
           {'  '}
-          <input type="text" id="name" value={this.state.name} onChange={this.handleChange}></input>
+          <input type="text" id="name" value={this.state.name} onChange={this.handleNameChange}></input>
+        </div>
+        <div className="input-container">
+          <label>Student Tags: </label>
+          {'  '}
+          <input type="text" id="tags" value={this.state.tags} onChange={this.handleTagChange}></input>
         </div>
       </div>
     )
