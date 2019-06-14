@@ -90,3 +90,22 @@ body {
   width: 200px;
   height: 40px;
 }
+
+/* Logo styling */
+
+.logo-container {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 8%;
+  margin-top: 80px;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}

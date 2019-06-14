@@ -9,6 +9,7 @@ class App extends React.Component {
     this.state = {
       data: [],
       filterData: [],
+      clicked: false,
     }
     this.filterStudents = this.filterStudents.bind(this);
   }
@@ -49,6 +50,7 @@ class App extends React.Component {
           <Students
             data={this.state.data}
             filterData={this.state.filterData}
+            clicked={this.props.clicked}
           />
         </div>
       </div>

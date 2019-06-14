@@ -34,6 +34,17 @@ class Students extends React.Component {
               </div>
             </div>
           </div>
+              {this.props.clicked ?
+              <div>
+                test 1:
+              </div>
+              :
+              <div className="logo-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRizT3fEFOQHdZyw-EdCt3XOVUnbvKsASn036Xr7aK0cnJVIGwq" className="logo"
+                onClick={() => console.log('hello')}
+                />
+              </div>
+              }
         </div>
       )
     })
