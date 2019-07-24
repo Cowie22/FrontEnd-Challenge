@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Students from './students/Students.jsx';
 import Search from './search/Search.jsx';
+import './styles/Styles.scss'
 class App extends React.Component {
   constructor(props) {
     super(props);
