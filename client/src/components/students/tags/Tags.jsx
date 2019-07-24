@@ -8,7 +8,6 @@ class Tags extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
   }
-  // Handles changes in the tag field
   handleChange(event) {
     console.log(event.target)
     this.setState({

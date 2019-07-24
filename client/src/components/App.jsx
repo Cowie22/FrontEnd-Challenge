@@ -41,35 +41,36 @@ class App extends React.Component {
   // tags filter and allows both to be filtered at the same time
   filterStudents(studentFilter) {
     let filteredStudents = this.state.tagFilterCount > 0 ? this.state.filterData : this.state.data;
+    let baseState = this.state.data;
     filteredStudents = filteredStudents.filter((student) => {
       let name = `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`;
       return name.indexOf(
         studentFilter.toLowerCase()) !== -1
     })
     this.setState({
-      filterData: filteredStudents,
+      filterData: studentFilter.length > 0 ? filteredStudents : baseState,
     })
   }
-  // Keeps track of the field length so that both fields can be filtered at the same time
+
   handleNameCount(event) {
     this.setState({
       nameCount: event
     })
   }
-  // Filters for student tags, first conditional in the function is dependent on the length of the
-  // names filter and allows both to be filtered at the same time
+
   filterTags(tagFilter) {
     let filteredTags = this.state.nameCount > 0 ? this.state.filterData : this.state.data;
+    let baseState = this.state.data;
     filteredTags = filteredTags.filter((tag) => {
       let tagalong = tag.tags.join().toLowerCase();
       return tagalong.indexOf(
         tagFilter.toLowerCase()) !== -1
     })
     this.setState({
-      filterData: filteredTags,
+      filterData: tagFilter.length > 0 ? filteredTags : baseState,
     })
   }
-  // Keeps track of the field length so that both fields can be filtered at the same time
+
   handleTagCount(event) {
     this.setState({
       tagFilterCount: event
@@ -81,9 +82,7 @@ class App extends React.Component {
       clicked: !this.state.clicked,
     })
   }
-  // Handles when a new tag is added, if there are no tags then the tags field
-  // Is added as an array to the correct object using the object id and the field value
-  // Is pushed to the array
+
   handleAddTag(event, id) {
     this.state.data.map((student, i) => {
       if (id + 1 === student.id) {
