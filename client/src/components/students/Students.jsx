@@ -1,5 +1,5 @@
 import React from 'react';
-import Tags from './StudentChildren/Tags.jsx';
+import Tags from './tags/Tags.jsx';
 
 const Students = (props) => {
   // Filters the data so that the correct information is displayed in the correct spot
@@ -10,12 +10,9 @@ const Students = (props) => {
       return <p className="score">{`Test ${i + 1}: ${grade}%`}</p>
     })
     // Formats the tags if there is a tag in the particular student object
-    let studentTags;
-    if (person.tag) {
-      studentTags = person.tag.map((tagalong, i) => {
-        return <div key={i} className="tagalong">{tagalong}</div>
-      });
-    }
+    let studentTags = person.tags.map((tag, i) => {
+      return <div key={tag[i]} className="tagalong">{tag}</div>
+    });
     return (
       // onClick conditional used on the ID so that if the id is negative, the hidden information will be displayed
       // Otherwise the original information is displayed
@@ -81,6 +78,7 @@ const Students = (props) => {
                 <Tags
                   handleAddTag={props.handleAddTag}
                   tagInput={props.tagInput}
+                  id={i}
                 />
               </div>
               :

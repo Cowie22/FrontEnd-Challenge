@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Students from './children/Students.jsx';
-import Search from './children/Search.jsx';
+import Students from './students/Students.jsx';
+import Search from './search/Search.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -9,9 +9,7 @@ class App extends React.Component {
       data: [],
       filterData: [],
       clicked: false,
-      tagInput: [],
       tagCount: 0,
-      filter: [],
       nameCount: 0,
       tagFilterCount: 0,
     }
@@ -25,11 +23,14 @@ class App extends React.Component {
   componentDidMount() {
     this.getAPIData();
   }
-  // Gets data from the API
+
   getAPIData() {
     axios.get('https://www.hatchways.io/api/assessment/students')
       .then(res => {
-        res.data.students.clicked = false;
+        res.data.students.map((student, i) => {
+          student.clicked = false;
+          student.tags = [];
+        })
         this.setState({
           data: res.data.students,
           filterData: res.data.students,
@@ -59,12 +60,10 @@ class App extends React.Component {
   // names filter and allows both to be filtered at the same time
   filterTags(tagFilter) {
     let filteredTags = this.state.nameCount > 0 ? this.state.filterData : this.state.data;
-    filteredTags = filteredTags.filter((tags) => {
-      if (tags.tag) {
-        let tagalong = tags.tag.join().toLowerCase();
-        return tagalong.indexOf(
-          tagFilter.toLowerCase()) !== -1
-      }
+    filteredTags = filteredTags.filter((tag) => {
+      let tagalong = tag.tags.join().toLowerCase();
+      return tagalong.indexOf(
+        tagFilter.toLowerCase()) !== -1
     })
     this.setState({
       filterData: filteredTags,
@@ -77,7 +76,7 @@ class App extends React.Component {
     })
   }
   // Handles whether or not the hidden information is displayed
-  handleLogoClicked(event) {
+  handleLogoClicked() {
     this.setState({
       clicked: !this.state.clicked,
     })
@@ -85,14 +84,10 @@ class App extends React.Component {
   // Handles when a new tag is added, if there are no tags then the tags field
   // Is added as an array to the correct object using the object id and the field value
   // Is pushed to the array
-  handleAddTag(event) {
-    this.state.tagInput.push(event);
+  handleAddTag(event, id) {
     this.state.data.map((student, i) => {
-      if (!student.tag) {
-        student.tag = [];
-      }
-      if (i + 1 === student.id) {
-        student.tag.push(event);
+      if (id + 1 === student.id) {
+        student.tags.push(event);
       }
     })
     // Callback so that the added tag is not one click behind
@@ -101,11 +96,12 @@ class App extends React.Component {
     }, () => console.log('data', this.state.data))
   }
   render() {
+    const { data, filterData, clicked } = this.state;
     return (
       <div>
         <div className="search-container">
           <Search
-            filterData={this.state.filterData}
+            filterData={filterData}
             filterStudents={this.filterStudents}
             filterTags={this.filterTags}
             handleNameCount={this.handleNameCount}
@@ -114,13 +110,11 @@ class App extends React.Component {
         </div>
         <div className="app-container">
           <Students
-            data={this.state.data}
-            filterData={this.state.filterData}
-            clicked={this.state.clicked}
+            data={data}
+            filterData={filterData}
+            clicked={clicked}
             handleLogoClicked={this.handleLogoClicked}
             handleAddTag={this.handleAddTag}
-            tagInput={this.state.tagInput}
-            filter={this.state.filter}
           />
         </div>
       </div>
