@@ -18,6 +18,12 @@
   width: 100%;
   height: 100%;
 }
+
+%Flex-Start {
+  display: flex;
+  flex-direction: flex-start;
+  align-items: flex-start;
+}
 body {
   @extend %Column-Display;
   background-color: white;
@@ -26,9 +32,7 @@ body {
 }
 /* Student Styling */
 .app-container {
-  display: flex;
-  flex-direction: flex-start;
-  align-items: flex-start;
+  @extend %Flex-Start;
   border: 1px solid rgba(0,0,0,0.4);
   border-radius: 1%;
   width: 100%;
@@ -41,8 +45,7 @@ body {
     border-bottom: 1px solid rgba(0,0,0,0.4);
     .student-pic {
       border: 1px solid rgba(0,0,0,0.4);
-      flex-direction: flex-start;
-      align-items: flex-start;
+      @extend %Flex-Start;
       border-radius: 50%;
       height: 30%;
       width: 30%;
@@ -54,8 +57,7 @@ body {
     .student-info-container{
       @extend %Column-Display;
       @extend %Max-Width-Height;
-      justify-content: flex-start;
-      align-items: flex-start;
+      @extend %Flex-Start;
       margin-bottom: 40px;
       .student-name {
         font-size: 44px;
@@ -65,8 +67,7 @@ body {
       .student-info {
         @extend %Column-Display;
         color: rgba(0,0,0,0.5);
-        justify-content: flex-start;
-        align-items: flex-start;
+        @extend %Flex-Start;
         font-size: 18px;
         margin-left: 34px;
         margin-top: 14px;
@@ -82,8 +83,7 @@ body {
       };
       .tags-section {
         @extend %Row-Display;
-        justify-content: flex-start;
-        align-items: flex-start;
+        @extend %Flex-Start;
         margin-bottom: 50px;
         .new-tag {
           @extend %Row-Display;
@@ -126,8 +126,7 @@ body {
       margin-bottom: 20px;
       .tags-input {
         @extend %Column-Display;
-        justify-content: flex-start;
-        align-items: flex-start;
+        @extend %Flex-Start;
         font-size: 34px;
         .btn {
           @extend %Row-Display;
@@ -151,8 +150,7 @@ body {
 /* Search Bar Styles */
 .search-container {
   @extend %Column-Display;
-  justify-content: flex-start;
-  align-items: flex-start;
+  @extend %Flex-Start;
   width: 828px;
   margin-bottom: 20px;
   .search-form {
