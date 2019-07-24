@@ -54,36 +54,38 @@ const Students = (props) => {
               </div>
             }
           </div>
-        </div>
-            {parseInt(person.id) < 0 ?
-              <div className="logo-container">
-                <img src="http://pngimg.com/uploads/minus/minus_PNG55.png" className="logo"
-                onClick={() => props.handleLogoClicked()}
-                />
-              </div>
-              :
-              <div className="logo-container">
+      </div>
+      <div className="outer-logo-container">
+        {parseInt(person.id) < 0 ?
+          <div className="logo-container">
+            <img src="http://pngimg.com/uploads/minus/minus_PNG55.png" className="logo"
+            onClick={() => props.handleLogoClicked()}
+            />
+          </div>
+          :
+            <div className="logo-container">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRizT3fEFOQHdZyw-EdCt3XOVUnbvKsASn036Xr7aK0cnJVIGwq" className="logo"
                 onClick={() => props.handleLogoClicked()}
                 />
-              </div>
-            }
-            <div className="hidden-info">
-              {parseInt(person.id) < 0 ?
-                <div className="tags-container">
-                  <Tags
-                    handleAddTag={props.handleAddTag}
-                    tagInput={props.tagInput}
-                    id={i}
-                  />
-                </div>
-                :
-                <div>
-
-                </div>
-              }
             </div>
-      </div>
+        }
+        <div className="hidden-info">
+          {parseInt(person.id) < 0 ?
+            <div className="tags-container">
+              <Tags
+                handleAddTag={props.handleAddTag}
+                tagInput={props.tagInput}
+                id={i}
+                />
+            </div>
+            :
+            <div>
+
+            </div>
+          }
+          </div>
+        </div>
+    </div>
     )
   })
   return(

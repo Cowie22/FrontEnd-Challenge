@@ -31,16 +31,29 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-form">
-        <h2>Search Students</h2>
         <div className="input-container">
-          <label>Student Name: </label>
           {'  '}
-          <input type="text" id="name" value={this.state.name} onChange={this.handleNameChange}></input>
+            <input
+            type="text"
+            id="name"
+            value={this.state.name}
+            onChange={this.handleNameChange}
+            placeholder={'Search by name'}
+            style={{fontSize: '22px', border: '0px', borderBottom: '1px solid rgba(0,0,0,0.4)', width: 820}}
+            >
+            </input>
         </div>
         <div className="input-container">
-          <label>Student Tags: </label>
           {'  '}
-          <input type="text" id="tags" value={this.state.tags} onChange={this.handleTagChange}></input>
+            <input
+            type="text"
+            id="tags"
+            value={this.state.tags}
+            onChange={this.handleTagChange}
+            placeholder={'Search by tags'}
+            style={{fontSize: '22px', border: '0px', borderBottom: '1px solid rgba(0,0,0,0.4)', width: 820}}
+            >
+          </input>
         </div>
       </div>
     )

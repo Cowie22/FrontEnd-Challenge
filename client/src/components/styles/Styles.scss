@@ -41,8 +41,8 @@ body {
       flex-direction: flex-start;
       align-items: flex-start;
       border-radius: 50%;
-      height: 20%;
-      width: 20%;
+      height: 30%;
+      width: 30%;
       margin-top: 18px;
       margin-right: 60px;
       margin-left: 30px;
@@ -80,16 +80,19 @@ body {
       };
       .tags-section {
         @extend %Row-Display;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 50px;
         .new-tag {
           @extend %Row-Display;
           width: fit-content;
           height: fit-content;
-          font-size: 18px;
+          font-size: 22px;
           font-weight: bold;
           text-align: center;
           border-radius: 4px;
           .tagalong {
-            background-color: darkgrey;
+            background-color: rgba(0,0,0,0.2);
             color: black;
             border: 1px solid black;
             margin-right: 10px;
@@ -105,26 +108,40 @@ body {
 /* Tags Styling */
 
 .hidden-info {
-  @extend %Column-Display;
-  height: fit-content;
-  position: relative;
-  top: 82%;
-  left: -50%;
+  @extend %Row-Display;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
   .tags-container {
     @extend %Column-Display;
+    justify-content: flex-end;
+    height: 100%;
+    align-items: flex-end;
     margin-top: 20px;
+    margin-top: 380px;
+    margin-left: -300px;
     .inner-tag-container {
+      @extend %Column-Display;
       margin-top: 40px;
       margin-bottom: 20px;
       .tags-input {
+        @extend %Column-Display;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: 34px;
         .btn {
-          background: black;
-          color: white;
-          font-size: 14px;
-          font-weight: bold;
+          @extend %Row-Display;
+          background: rgba(0,0,0,0.2);
+          word-spacing: 2px;
+          letter-spacing: 1px;
+          border-radius: 4%;
+          color: black;
+          font-size: 22px;
+          margin-top: 20px;
           &:hover {
-            background: white;
-            color: black;
+            background: rgba(0,0,0,0.8);
+            color: white;
             cursor: pointer;
           }
         }
@@ -136,45 +153,44 @@ body {
 /* Search Bar Styles */
 
 .search-container {
-  display: flex;
-  border: 1px solid rgba(0,0,0,0.4);
-  border-radius: 2%;
+  @extend %Column-Display;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 828px;
   margin-bottom: 20px;
-  top: 10%;
-  left: 22.2%;
   .search-form {
-    @extend %Row-Display;
+    @extend %Column-Display;
     justify-content: space-evenly;
     height: fit-content;
     margin-left: 10px;
+    font-size: 22px;
     .input-container {
       @extend %Column-Display;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: bold;
-      margin-bottom: 10px;
-      margin-left: 70px;
-      margin-top: 10px;
-      width: 200px;
-      height: 40px;
+      margin-bottom: 18px;
+      margin-top: 14px;
     }
   }
 }
 
 /* Logo styling */
-
-.logo-container {
-  display: flex;
-  justify-content: flex-end;
-  position: fixed;
-  right: 22%;
-  height: 20%;
-  .logo {
-    height: 40px;
-    width: 40px;
-    color: rgba(0,0,0,0.5);
-    &:hover {
-      cursor: pointer;
+.outer-logo-container {
+  @extend %Column-Display;
+  width: 100%;
+  height: 100%;
+  margin-left: -100px;
+  .logo-container {
+    @extend %Column-Display;
+    width: 100%;
+    height: 100%;
+    margin-right: 100px;
+    .logo {
+      height: 40px;
+      width: 40px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

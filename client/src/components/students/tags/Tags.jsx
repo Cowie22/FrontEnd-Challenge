@@ -19,12 +19,17 @@ class Tags extends React.Component {
     return (
       <div className="inner-tag-container">
         <div className="tags-input">
-          <label>Insert Tags: </label>
           {'  '}
-          <input type="text" id={this.props.id} value={tagValue} onChange={this.handleChange}></input>
+          <input type="text"
+          id={this.props.id}
+          value={tagValue}
+          onChange={this.handleChange}
+          placeholder={'Add A Tag'}
+          style={{fontSize: '22px', border: '0px', borderBottom: '1px solid rgba(0,0,0,0.4)'}}
+          ></input>
           {/* Click is passed up to app giving the correct value in the array,
           which in turn can be both displayed on the page and filtered by */}
-          <button className="btn" onClick={() => this.props.handleAddTag(tagValue, this.props.id)}>ADD TAG</button>
+          <button className="btn" onClick={() => this.props.handleAddTag(tagValue, this.props.id)}>NEW TAG</button>
         </div>
       </div>
     )
