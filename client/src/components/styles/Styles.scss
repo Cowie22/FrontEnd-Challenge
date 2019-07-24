@@ -14,12 +14,15 @@
   align-items: center;
 }
 
+%Max-Width-Height {
+  width: 100%;
+  height: 100%;
+}
 body {
   @extend %Column-Display;
   background-color: white;
   color: black;
-  width: 100%;
-  height: 100%;
+  @extend %Max-Width-Height;
 }
 /* Student Styling */
 .app-container {
@@ -50,8 +53,7 @@ body {
     };
     .student-info-container{
       @extend %Column-Display;
-      width: 100%;
-      height: 100%;
+      @extend %Max-Width-Height;
       justify-content: flex-start;
       align-items: flex-start;
       margin-bottom: 40px;
@@ -104,15 +106,12 @@ body {
     };
   };
 }
-
 /* Tags Styling */
-
 .hidden-info {
   @extend %Row-Display;
   justify-content: flex-start;
   align-items: flex-end;
-  width: 100%;
-  height: 100%;
+  @extend %Max-Width-Height;
   .tags-container {
     @extend %Column-Display;
     justify-content: flex-end;
@@ -149,9 +148,7 @@ body {
     }
   }
 }
-
 /* Search Bar Styles */
-
 .search-container {
   @extend %Column-Display;
   justify-content: flex-start;
@@ -173,17 +170,14 @@ body {
     }
   }
 }
-
 /* Logo styling */
 .outer-logo-container {
   @extend %Column-Display;
-  width: 100%;
-  height: 100%;
+  @extend %Max-Width-Height;
   margin-left: -100px;
   .logo-container {
     @extend %Column-Display;
-    width: 100%;
-    height: 100%;
+    @extend %Max-Width-Height;
     margin-right: 100px;
     .logo {
       height: 40px;

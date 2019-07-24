@@ -14,6 +14,11 @@ class Tags extends React.Component {
       tagValue: event.target.value,
     })
   }
+  handleReset() {
+    this.setState({
+      tagValue: '',
+    })
+  }
   render() {
     const { tagValue } = this.state;
     return (
@@ -29,7 +34,14 @@ class Tags extends React.Component {
           ></input>
           {/* Click is passed up to app giving the correct value in the array,
           which in turn can be both displayed on the page and filtered by */}
-          <button className="btn" onClick={() => this.props.handleAddTag(tagValue, this.props.id)}>NEW TAG</button>
+          <button className="btn" onClick={() => {
+            this.props.handleAddTag(tagValue, this.props.id);
+            this.handleReset();
+          }
+            }
+            >
+            NEW TAG
+            </button>
         </div>
       </div>
     )
