@@ -3,7 +3,9 @@ import Tags from './tags/Tags.jsx';
 
 const Students = (props) => {
 
-  let student = props.filterData.map((person, i) => {
+  const { filterData, handleLogoClicked, handleAddTag, tagInput } = props;
+
+  let student = filterData.map((person, i) => {
     // Get the average test scores
     let average = person.grades.reduce((a, b) => parseInt(a) + parseInt(b)) / person.grades.length;
     let testScores = person.grades.map((grade, i) => {
@@ -59,13 +61,13 @@ const Students = (props) => {
         {parseInt(person.id) < 0 ?
           <div className="logo-container">
             <img src="http://pngimg.com/uploads/minus/minus_PNG55.png" className="logo"
-            onClick={() => props.handleLogoClicked()}
+            onClick={() => handleLogoClicked()}
             />
           </div>
           :
             <div className="logo-container">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRizT3fEFOQHdZyw-EdCt3XOVUnbvKsASn036Xr7aK0cnJVIGwq" className="logo"
-                onClick={() => props.handleLogoClicked()}
+                onClick={() => handleLogoClicked()}
                 />
             </div>
         }
@@ -73,8 +75,8 @@ const Students = (props) => {
           {parseInt(person.id) < 0 ?
             <div className="tags-container">
               <Tags
-                handleAddTag={props.handleAddTag}
-                tagInput={props.tagInput}
+                handleAddTag={handleAddTag}
+                tagInput={tagInput}
                 id={i}
                 />
             </div>

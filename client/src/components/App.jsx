@@ -52,7 +52,8 @@ class App extends React.Component {
       filterData: studentFilter.length > 0 ? filteredStudents : baseState,
     })
   }
-
+  // This count is used here and for the tag field to know if it is filled or not.
+  // Thus helping to filter the two fields at the same time
   handleNameCount(event) {
     this.setState({
       nameCount: event
